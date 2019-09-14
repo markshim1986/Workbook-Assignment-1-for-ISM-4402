@@ -9,7 +9,7 @@ from sqlalchemy import create_engine
 
 # Connect to sqlite db
 db_file = r'datasets/salesdata.db'
-engine = create_engine (r"sqlite:///[]".format(db_file))
+engine = create_engine (r"sqlite:///{}".format(db_file))
 
 sql = "select name from sqlite_master where type = 'table';"
 
