@@ -1,23 +1,23 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
+
 
 
 import pandas as pd
-from sqlalchemy import create_engine
+import numpy as np
+import glob
 
-# Connect to sqlite db
-db_file = r'datasets/salesdata.db'
-engine = create_engine (r"sqlite:///{}".format(db_file))
-
-sql = "select name from sqlite_master where type = 'table';"
-
-sales_data_df = pd.read_sql(sql,engine)
-sales_data_df.head()
+all_data = pd.DataFrame()
+for f in glob.glob("datasets/weekly_call_data/weekdata*.xlsx"):
+    print f
+    df = pd.read_excel(f)
+    all_data = all_data.append(df,ignore_index=True)  
+    all_data.describe()
 
 
-# In[ ]:
+# In[2]:
 
 
 all_data.head()
